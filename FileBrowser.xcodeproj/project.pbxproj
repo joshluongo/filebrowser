@@ -57,9 +57,9 @@
 		B0649C801BA0E79F0066BEFD /* FBTVCustomPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0649C7D1BA0E79F0066BEFD /* FBTVCustomPreviewController.m */; };
 		B0649C811BA0E79F0066BEFD /* FBTVFilesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0649C7F1BA0E79F0066BEFD /* FBTVFilesTableViewController.m */; };
 		B07B35591B38AD6800C772E7 /* PepperUICore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B07B35581B38AD6800C772E7 /* PepperUICore.framework */; };
-		B08285E81BAFCF6F006792A8 /* NanoFBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B01916CD1B2C10C500311461 /* NanoFBAppDelegate.m */; settings = {ASSET_TAGS = (); }; };
-		B08285E91BAFCF6F006792A8 /* NanoFBFilesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B01916C71B2C101400311461 /* NanoFBFilesTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		B08285EB1BAFCF6F006792A8 /* FBFrameworkMain.m in Sources */ = {isa = PBXBuildFile; fileRef = B01916BF1B2C0D0900311461 /* FBFrameworkMain.m */; settings = {ASSET_TAGS = (); }; };
+		B08285E81BAFCF6F006792A8 /* NanoFBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B01916CD1B2C10C500311461 /* NanoFBAppDelegate.m */; };
+		B08285E91BAFCF6F006792A8 /* NanoFBFilesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B01916C71B2C101400311461 /* NanoFBFilesTableViewController.m */; };
+		B08285EB1BAFCF6F006792A8 /* FBFrameworkMain.m in Sources */ = {isa = PBXBuildFile; fileRef = B01916BF1B2C0D0900311461 /* FBFrameworkMain.m */; };
 		B08285EE1BAFD310006792A8 /* FBCustomPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B00D24B419D96A0800F66D2D /* FBCustomPreviewController.m */; };
 		B0AECFA31BAFE45E00D82731 /* FBFilesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03C5F29177110B400295DD2 /* FBFilesTableViewController.m */; };
 		B0AECFA41BAFE45E00D82731 /* FBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B03C5F091771107F00295DD2 /* FBAppDelegate.m */; };
@@ -545,14 +545,14 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = FB;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "High Caffeine Content";
 				TargetAttributes = {
 					B01916B31B2C0CAC00311461 = {
 						CreatedOnToolsVersion = 7.0;
 					};
 					B03C5EF51771107F00295DD2 = {
-						DevelopmentTeam = 2ZDN69KUUV;
+						DevelopmentTeam = L7R443CQYH;
 					};
 					B0649C631BA0E6B70066BEFD = {
 						CreatedOnToolsVersion = 7.1;
@@ -905,7 +905,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

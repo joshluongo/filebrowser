@@ -64,12 +64,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Path" style:UIBarButtonItemStylePlain target:self action:@selector(openPathBox)];
+    self.navigationItem.rightBarButtonItem = item;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)openPathBox {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Enter Path" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.keyboardType = UIKeyboardTypeURL;
+        textField.placeholder = @"Path";
+    }];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Open" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self openPath:alert.textFields.firstObject.text];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:alert animated:true completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -150,36 +167,39 @@
 {
 	NSString *newPath = [self.path stringByAppendingPathComponent:self.files[indexPath.row]];
 	
-	
-	BOOL isDirectory;
-	BOOL fileExists = [[NSFileManager defaultManager ] fileExistsAtPath:newPath isDirectory:&isDirectory];
-	
-	
-	if (fileExists)
-	{
-		if (isDirectory)
-		{
-			FBFilesTableViewController *vc = [[FBFilesTableViewController alloc] initWithPath:newPath];
-			[self.navigationController showViewController:vc sender:self];
-		}
-		else if ([FBCustomPreviewController canHandleExtension:[newPath pathExtension]])
-		{
-			FBCustomPreviewController *preview = [[FBCustomPreviewController alloc] initWithFile:newPath];
-			
-			UINavigationController *detailNavController = [[UINavigationController alloc] initWithRootViewController:preview];
+    [self openPath:newPath];
+}
 
-			[self.navigationController showDetailViewController:detailNavController sender:self];
-		}
-		else
-		{
-			QLPreviewController *preview = [[QLPreviewController alloc] init];
-			preview.dataSource = self;
-			
-			UINavigationController *detailNavController = [[UINavigationController alloc] initWithRootViewController:preview];
-			
-			[self.navigationController showDetailViewController:detailNavController sender:self];
-		}
-	}
+- (void)openPath:(NSString *)newPath {
+    BOOL isDirectory;
+    BOOL fileExists = [[NSFileManager defaultManager ] fileExistsAtPath:newPath isDirectory:&isDirectory];
+    
+    
+    if (fileExists)
+    {
+        if (isDirectory)
+        {
+            FBFilesTableViewController *vc = [[FBFilesTableViewController alloc] initWithPath:newPath];
+            [self.navigationController showViewController:vc sender:self];
+        }
+        else if ([FBCustomPreviewController canHandleExtension:[newPath pathExtension]])
+        {
+            FBCustomPreviewController *preview = [[FBCustomPreviewController alloc] initWithFile:newPath];
+            
+            UINavigationController *detailNavController = [[UINavigationController alloc] initWithRootViewController:preview];
+            
+            [self.navigationController showDetailViewController:detailNavController sender:self];
+        }
+        else
+        {
+            QLPreviewController *preview = [[QLPreviewController alloc] init];
+            preview.dataSource = self;
+            
+            UINavigationController *detailNavController = [[UINavigationController alloc] initWithRootViewController:preview];
+            
+            [self.navigationController showDetailViewController:detailNavController sender:self];
+        }
+    }
 }
 
 #pragma mark - QuickLook
